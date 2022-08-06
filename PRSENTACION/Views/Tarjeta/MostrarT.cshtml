@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ENTITY.TARJETA>
+
+@{
+    ViewBag.Title = "MostrarT";
+}
+
+<h2>Mostrar Tarjetas</h2>
+
+<p>
+    <a class="btn btn-info" href="/Tarjeta/CrearT/"> REGISTAR TARJETA</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHAA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALDOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCLIENTE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHAA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALDOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCLIENTE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ActualizarT", new { id=item.ID }) |
+            
+            @Html.ActionLink("Delete", "Borrar", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Regresar al Menu Principal", "MenuP", "Menu")
+</div>

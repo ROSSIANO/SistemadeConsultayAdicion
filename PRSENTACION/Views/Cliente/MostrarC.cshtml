@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ENTITY.CLIENTE>
+
+@{
+    ViewBag.Title = "MostrarC";
+}
+
+<h2>Listado de Clientes</h2>
+
+<p>
+    <a class="btn btn-info" href="/Cliente/CrearC/"> CREAR CLIENTE</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FOTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FOTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREO)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "ActualizarC", new { id=item.ID }) |
+           
+            @Html.ActionLink("Delete", "Borrar", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Regresar al Menu Principal", "ELogin", "Menu")
+</div>

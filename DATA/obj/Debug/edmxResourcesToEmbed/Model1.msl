@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BANCARIOModelStoreContainer" CdmEntityContainer="BANCARIOEntities">
+    <FunctionImportMapping FunctionImportName="SP_DEPOSITOS" FunctionName="BANCARIOModel.Store.SP_DEPOSITOS" />
+    <FunctionImportMapping FunctionImportName="SP_AVANCE" FunctionName="BANCARIOModel.Store.SP_AVANCE" />
+    <FunctionImportMapping FunctionImportName="SP_PAGOPRESTAMO" FunctionName="BANCARIOModel.Store.SP_PAGOPRESTAMO" />
+    <FunctionImportMapping FunctionImportName="SP_PAGOTARJETA" FunctionName="BANCARIOModel.Store.SP_PAGOTARJETA" />
+    <EntitySetMapping Name="AHORRO">
+      <EntityTypeMapping TypeName="BANCARIOModel.AHORRO">
+        <MappingFragment StoreEntitySet="AHORRO">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="FECHAA" ColumnName="FECHAA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="BANCARIOModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="IDESTATUS" ColumnName="IDESTATUS" />
+          <ScalarProperty Name="IDREGISTRAR" ColumnName="IDREGISTRAR" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="BANCARIOModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="IDREGISTRAR" ColumnName="IDREGISTRAR" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTATUS">
+      <EntityTypeMapping TypeName="BANCARIOModel.ESTATUS">
+        <MappingFragment StoreEntitySet="ESTATUS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ESTATUS1" ColumnName="ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRESTAMO">
+      <EntityTypeMapping TypeName="BANCARIOModel.PRESTAMO">
+        <MappingFragment StoreEntitySet="PRESTAMO">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="MONTOA" ColumnName="MONTOA" />
+          <ScalarProperty Name="TASAI" ColumnName="TASAI" />
+          <ScalarProperty Name="MONTOD" ColumnName="MONTOD" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGISTRARC">
+      <EntityTypeMapping TypeName="BANCARIOModel.REGISTRARC">
+        <MappingFragment StoreEntitySet="REGISTRARC">
+          <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="NUSUARIO" ColumnName="NUSUARIO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGISTRARE">
+      <EntityTypeMapping TypeName="BANCARIOModel.REGISTRARE">
+        <MappingFragment StoreEntitySet="REGISTRARE">
+          <ScalarProperty Name="IDEMPLEADO" ColumnName="IDEMPLEADO" />
+          <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+          <ScalarProperty Name="NUSUARIO" ColumnName="NUSUARIO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARJETA">
+      <EntityTypeMapping TypeName="BANCARIOModel.TARJETA">
+        <MappingFragment StoreEntitySet="TARJETA">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="SALDOD" ColumnName="SALDOD" />
+          <ScalarProperty Name="FECHAA" ColumnName="FECHAA" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANCARIOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AHORRO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHAA" Type="nvarchar" MaxLength="50" />
+    <Property Name="MONTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDCLIENTE" Type="int" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FOTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TELEFONO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CORREO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDREGISTRAR" Type="int" />
+    <Property Name="IDESTATUS" Type="int" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" />
+    <Property Name="FOTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDREGISTRAR" Type="int" />
+    <Property Name="CORREO" Type="nchar" MaxLength="50" />
+    <Property Name="TELEFONO" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ESTATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ESTATUS" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRESTAMO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MONTOD" Type="int" />
+    <Property Name="TASAI" Type="int" />
+    <Property Name="MONTOA" Type="int" />
+    <Property Name="IDCLIENTE" Type="int" />
+  </EntityType>
+  <EntityType Name="REGISTRARC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NUSUARIO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDCLIENTE" Type="int" />
+    <Property Name="CONTRASENA" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="REGISTRARE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NUSUARIO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CONTRASENA" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDEMPLEADO" Type="int" />
+  </EntityType>
+  <EntityType Name="TARJETA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHAA" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALDOD" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALDO" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDCLIENTE" Type="int" />
+  </EntityType>
+  <Association Name="FK_AHORRO_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="AHORRO" Type="Self.AHORRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AHORRO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_ESTATUS">
+    <End Role="ESTATUS" Type="Self.ESTATUS" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTATUS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="IDESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_REGISTRARE">
+    <End Role="REGISTRARE" Type="Self.REGISTRARE" Multiplicity="0..1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGISTRARE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="IDREGISTRAR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRESTAMO_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="PRESTAMO" Type="Self.PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRESTAMO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTRARC_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="REGISTRARC" Type="Self.REGISTRARC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRARC">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTRARE_EMPLEADO">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="0..1" />
+    <End Role="REGISTRARE" Type="Self.REGISTRARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRARE">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_TARJETA">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_AVANCE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="monto" Type="int" Mode="In" />
+    <Parameter Name="idahorro" Type="int" Mode="In" />
+    <Parameter Name="idtarjeta" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DEPOSITOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="monto" Type="int" Mode="In" />
+    <Parameter Name="idahorro" Type="int" Mode="In" />
+    <Parameter Name="idahorro2" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_PAGOPRESTAMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="monto" Type="int" Mode="In" />
+    <Parameter Name="idahorro" Type="int" Mode="In" />
+    <Parameter Name="idprestamo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_PAGOTARJETA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="monto" Type="int" Mode="In" />
+    <Parameter Name="idahorro" Type="int" Mode="In" />
+    <Parameter Name="idtarjeta" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BANCARIOModelStoreContainer">
+    <EntitySet Name="AHORRO" EntityType="Self.AHORRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTATUS" EntityType="Self.ESTATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRESTAMO" EntityType="Self.PRESTAMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REGISTRARC" EntityType="Self.REGISTRARC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REGISTRARE" EntityType="Self.REGISTRARE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TARJETA" EntityType="Self.TARJETA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AHORRO_CLIENTE" Association="Self.FK_AHORRO_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="AHORRO" EntitySet="AHORRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_ESTATUS" Association="Self.FK_CLIENTE_ESTATUS">
+      <End Role="ESTATUS" EntitySet="ESTATUS" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_REGISTRARE" Association="Self.FK_EMPLEADO_REGISTRARE">
+      <End Role="REGISTRARE" EntitySet="REGISTRARE" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRESTAMO_CLIENTE" Association="Self.FK_PRESTAMO_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PRESTAMO" EntitySet="PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTRARC_CLIENTE" Association="Self.FK_REGISTRARC_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="REGISTRARC" EntitySet="REGISTRARC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTRARE_EMPLEADO" Association="Self.FK_REGISTRARE_EMPLEADO">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="REGISTRARE" EntitySet="REGISTRARE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_TARJETA" Association="Self.FK_TARJETA_TARJETA">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

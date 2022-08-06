@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ENTITY.PRESTAMO>
+
+@{
+    ViewBag.Title = "MostrarP";
+}
+
+<h2>MostrarP</h2>
+
+<p>
+    <a class="btn btn-info" href="/Prestamo/CrearP/"> CREAR PRESTAMO</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TASAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTOA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCLIENTE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TASAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTOA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCLIENTE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Regresar al Menu Principal", "ELogin", "Menu")
+</div>

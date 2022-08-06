@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Menu2";
+}
+
+<h1>Menu de Empleado</h1>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+
+            <img src="~/Content/FOTOS/pngwing.com (4).png" class="card-img-top" alt="Max-width 100%">
+            <div class="card-body">
+                <a href="/Empleado/MostrarE/" class="btn btn-primary">EMPLEADO</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+
+            <img src="~/Content/FOTOS/pngwing.com (6).png" class="card-img-top" alt="Max-width 110%">
+            <div class="card-body">
+                <a href="/Menu/Menu3/" class="btn btn-primary">CLIENTE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Regresar al Menu Principal", "ELogin", "Menu")
+</div>
+

@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d561a3ef-f653-49de-a117-cfbfbe629b74": {
+      "ProjectGuid": "d561a3ef-f653-49de-a117-cfbfbe629b74",
+      "DisplayName": "BANCA",
+      "ColorIndex": 0
+    },
+    "bfe210f3-2b91-4764-aeb1-a815acd81b0e": {
+      "ProjectGuid": "bfe210f3-2b91-4764-aeb1-a815acd81b0e",
+      "DisplayName": "LAYER",
+      "ColorIndex": 1
+    },
+    "734dbf05-9ab2-4c90-a75d-5d673aeb869e": {
+      "ProjectGuid": "734dbf05-9ab2-4c90-a75d-5d673aeb869e",
+      "DisplayName": "ENTITY",
+      "ColorIndex": 2
+    },
+    "90379c43-1062-461e-90a2-7e344cef52b0": {
+      "ProjectGuid": "90379c43-1062-461e-90a2-7e344cef52b0",
+      "DisplayName": "DATA",
+      "ColorIndex": 3
+    },
+    "51ad5c9b-c1c2-40ae-85b3-c8084ee4ea3b": {
+      "ProjectGuid": "51ad5c9b-c1c2-40ae-85b3-c8084ee4ea3b",
+      "DisplayName": "PRSENTACION",
+      "ColorIndex": 4
+    },
+    "f742ef5e-02e6-4528-b2d3-d1ef2208d053": {
+      "ProjectGuid": "f742ef5e-02e6-4528-b2d3-d1ef2208d053",
+      "DisplayName": "DATA",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    },
+    "f1fac636-2c47-49f2-9a5a-c93872ca0230": {
+      "ProjectGuid": "f1fac636-2c47-49f2-9a5a-c93872ca0230",
+      "DisplayName": "DATA",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}

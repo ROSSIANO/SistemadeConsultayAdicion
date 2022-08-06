@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANCARIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BANCARIOEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_DEPOSITOS">
+      <Parameter Name="monto" Mode="In" Type="Int32" />
+      <Parameter Name="idahorro" Mode="In" Type="Int32" />
+      <Parameter Name="idahorro2" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_AVANCE">
+      <Parameter Name="monto" Mode="In" Type="Int32" />
+      <Parameter Name="idahorro" Mode="In" Type="Int32" />
+      <Parameter Name="idtarjeta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_PAGOPRESTAMO">
+      <Parameter Name="monto" Mode="In" Type="Int32" />
+      <Parameter Name="idahorro" Mode="In" Type="Int32" />
+      <Parameter Name="idprestamo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_PAGOTARJETA">
+      <Parameter Name="monto" Mode="In" Type="Int32" />
+      <Parameter Name="idahorro" Mode="In" Type="Int32" />
+      <Parameter Name="idtarjeta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="AHORRO" EntityType="BANCARIOModel.AHORRO" />
+    <EntitySet Name="CLIENTE" EntityType="BANCARIOModel.CLIENTE" />
+    <EntitySet Name="EMPLEADO" EntityType="BANCARIOModel.EMPLEADO" />
+    <EntitySet Name="ESTATUS" EntityType="BANCARIOModel.ESTATUS" />
+    <EntitySet Name="PRESTAMO" EntityType="BANCARIOModel.PRESTAMO" />
+    <EntitySet Name="REGISTRARC" EntityType="BANCARIOModel.REGISTRARC" />
+    <EntitySet Name="REGISTRARE" EntityType="BANCARIOModel.REGISTRARE" />
+    <EntitySet Name="TARJETA" EntityType="BANCARIOModel.TARJETA" />
+    <AssociationSet Name="FK_AHORRO_CLIENTE" Association="BANCARIOModel.FK_AHORRO_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="AHORRO" EntitySet="AHORRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_ESTATUS" Association="BANCARIOModel.FK_CLIENTE_ESTATUS">
+      <End Role="ESTATUS" EntitySet="ESTATUS" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRESTAMO_CLIENTE" Association="BANCARIOModel.FK_PRESTAMO_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PRESTAMO" EntitySet="PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTRARC_CLIENTE" Association="BANCARIOModel.FK_REGISTRARC_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="REGISTRARC" EntitySet="REGISTRARC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_TARJETA" Association="BANCARIOModel.FK_TARJETA_TARJETA">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_REGISTRARE" Association="BANCARIOModel.FK_EMPLEADO_REGISTRARE">
+      <End Role="REGISTRARE" EntitySet="REGISTRARE" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGISTRARE_EMPLEADO" Association="BANCARIOModel.FK_REGISTRARE_EMPLEADO">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="REGISTRARE" EntitySet="REGISTRARE" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AHORRO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHAA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MONTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDCLIENTE" Type="Int32" />
+    <NavigationProperty Name="CLIENTE" Relationship="BANCARIOModel.FK_AHORRO_CLIENTE" FromRole="AHORRO" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FOTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDREGISTRAR" Type="Int32" />
+    <Property Name="IDESTATUS" Type="Int32" />
+    <NavigationProperty Name="AHORRO" Relationship="BANCARIOModel.FK_AHORRO_CLIENTE" FromRole="CLIENTE" ToRole="AHORRO" />
+    <NavigationProperty Name="ESTATUS" Relationship="BANCARIOModel.FK_CLIENTE_ESTATUS" FromRole="CLIENTE" ToRole="ESTATUS" />
+    <NavigationProperty Name="PRESTAMO" Relationship="BANCARIOModel.FK_PRESTAMO_CLIENTE" FromRole="CLIENTE" ToRole="PRESTAMO" />
+    <NavigationProperty Name="REGISTRARC" Relationship="BANCARIOModel.FK_REGISTRARC_CLIENTE" FromRole="CLIENTE" ToRole="REGISTRARC" />
+    <NavigationProperty Name="TARJETA" Relationship="BANCARIOModel.FK_TARJETA_TARJETA" FromRole="CLIENTE" ToRole="TARJETA" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FOTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDREGISTRAR" Type="Int32" />
+    <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="REGISTRARE" Relationship="BANCARIOModel.FK_EMPLEADO_REGISTRARE" FromRole="EMPLEADO" ToRole="REGISTRARE" />
+    <NavigationProperty Name="REGISTRARE1" Relationship="BANCARIOModel.FK_REGISTRARE_EMPLEADO" FromRole="EMPLEADO" ToRole="REGISTRARE" />
+  </EntityType>
+  <EntityType Name="ESTATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ESTATUS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CLIENTE" Relationship="BANCARIOModel.FK_CLIENTE_ESTATUS" FromRole="ESTATUS" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="PRESTAMO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MONTOD" Type="Int32" />
+    <Property Name="TASAI" Type="Int32" />
+    <Property Name="MONTOA" Type="Int32" />
+    <Property Name="IDCLIENTE" Type="Int32" />
+    <NavigationProperty Name="CLIENTE" Relationship="BANCARIOModel.FK_PRESTAMO_CLIENTE" FromRole="PRESTAMO" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="REGISTRARC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDCLIENTE" Type="Int32" />
+    <Property Name="CONTRASENA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CLIENTE" Relationship="BANCARIOModel.FK_REGISTRARC_CLIENTE" FromRole="REGISTRARC" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="REGISTRARE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CONTRASENA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDEMPLEADO" Type="Int32" />
+    <NavigationProperty Name="EMPLEADO" Relationship="BANCARIOModel.FK_EMPLEADO_REGISTRARE" FromRole="REGISTRARE" ToRole="EMPLEADO" />
+    <NavigationProperty Name="EMPLEADO1" Relationship="BANCARIOModel.FK_REGISTRARE_EMPLEADO" FromRole="REGISTRARE" ToRole="EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TARJETA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHAA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALDOD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDCLIENTE" Type="Int32" />
+    <NavigationProperty Name="CLIENTE" Relationship="BANCARIOModel.FK_TARJETA_TARJETA" FromRole="TARJETA" ToRole="CLIENTE" />
+  </EntityType>
+  <Association Name="FK_AHORRO_CLIENTE">
+    <End Type="BANCARIOModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.AHORRO" Role="AHORRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AHORRO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_ESTATUS">
+    <End Type="BANCARIOModel.ESTATUS" Role="ESTATUS" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTATUS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="IDESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRESTAMO_CLIENTE">
+    <End Type="BANCARIOModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.PRESTAMO" Role="PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRESTAMO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTRARC_CLIENTE">
+    <End Type="BANCARIOModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.REGISTRARC" Role="REGISTRARC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRARC">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_TARJETA">
+    <End Type="BANCARIOModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.TARJETA" Role="TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_REGISTRARE">
+    <End Type="BANCARIOModel.REGISTRARE" Role="REGISTRARE" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGISTRARE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="IDREGISTRAR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGISTRARE_EMPLEADO">
+    <End Type="BANCARIOModel.EMPLEADO" Role="EMPLEADO" Multiplicity="0..1" />
+    <End Type="BANCARIOModel.REGISTRARE" Role="REGISTRARE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REGISTRARE">
+        <PropertyRef Name="IDEMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
